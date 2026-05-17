@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoilLife – Restore Your Land. Grow Your Future.</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fraunces:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #1e4d2b;
+    --green-mid: #2d7a3a;
+    --green-light: #4ea856;
+    --green-pale: #d4edda;
+    --brown-dark: #4a2c0a;
+    --brown-mid: #7c4a1e;
+    --brown-light: #b87333;
+    --soil: #8b5e3c;
+    --beige: #f5ead8;
+    --beige-dark: #e8d5b7;
+    --sun: #f9c74f;
+    --sun-warm: #f4a129;
+    --cream: #fdf6ec;
+    --white: #ffffff;
+    --text-dark: #1a1a1a;
+    --text-mid: #4a3728;
+    --text-light: #7a6555;
+    --shadow: rgba(30,77,43,0.12);
+    --radius: 20px;
+    --radius-sm: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--green-deep);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+  .logo-icon {
+    width: 38px; height: 38px;
+    background: var(--sun);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .nav-lang {
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    border-radius: 50px;
+    padding: 7px 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 5px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, var(--green-deep) 0%, #2d6a3a 55%, #3d8a48 100%);
+    padding: 40px 20px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(249,199,79,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(249,199,79,0.2);
+    border: 1.5px solid rgba(249,199,79,0.4);
+    color: var(--sun);
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 8vw, 2.8rem);
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .hero h1 em {
+    color: var(--sun);
+    font-style: italic;
+  }
+  .hero p {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    max-width: 400px;
+    margin-bottom: 28px;
+    font-weight: 600;
+  }
+  .hero-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .btn-primary {
+    background: var(--sun);
+    color: var(--brown-dark);
+    border: none;
+    border-radius: 50px;
+    padding: 14px 24px;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 8px;
+    box-shadow: 0 4px 16px rgba(249,199,79,0.4);
+    transition: transform 0.15s, box-shadow 0.15s;
+    font-family: 'Nunito', sans-serif;
+  }
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-secondary {
+    background: rgba(255,255,255,0.15);
+    color: var(--white);
+    border: 2px solid rgba(255,255,255,0.35);
+    border-radius: 50px;
+    padding: 13px 24px;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 8px;
+    transition: background 0.15s;
+    font-family: 'Nunito', sans-serif;
+  }
+  .btn-secondary:active { background: rgba(255,255,255,0.25); }
+
+  /* Voice search */
+  .voice-search {
+    background: rgba(255,255,255,0.12);
+    border: 2px dashed rgba(255,255,255,0.35);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .voice-search:active { background: rgba(255,255,255,0.2); }
+  .mic-btn {
+    width: 48px; height: 48px;
+    background: var(--sun-warm);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    animation: pulse 2.2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(244,161,41,0.5); }
+    50% { box-shadow: 0 0 0 10px rgba(244,161,41,0); }
+  }
+  .voice-search span {
+    color: rgba(255,255,255,0.9);
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+  .voice-search small {
+    display: block;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.78rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+
+  /* Hero illustration band */
+  .hero-scene {
+    margin-top: 30px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+    height: 190px;
+    overflow: visible;
+  }
+  .hero-scene-bg {
+    position: absolute;
+    bottom: 0; left: -20px; right: -20px;
+    height: 90px;
+    background: linear-gradient(to top, var(--beige) 0%, transparent 100%);
+    border-radius: 50% 50% 0 0 / 30px 30px 0 0;
+  }
+  .farmer-card {
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 16px 16px 0 0;
+    padding: 12px 10px 0;
+    text-align: center;
+    font-size: 3.2rem;
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(6px);
+  }
+  .farmer-card.big { width: 90px; height: 140px; font-size: 3.8rem; }
+  .farmer-card.med { width: 78px; height: 120px; font-size: 3.2rem; }
+  .farmer-card.sm  { width: 66px; height: 100px; font-size: 2.6rem; }
+  .before-after {
+    position: absolute;
+    top: 10px; right: 10px;
+    display: flex; gap: 6px;
+    z-index: 5;
+  }
+  .ba-pill {
+    border-radius: 50px;
+    padding: 5px 11px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+  }
+  .ba-pill.before { background: #c0392b; color: white; }
+  .ba-pill.after  { background: var(--green-light); color: white; }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 36px 18px; }
+  .section-label {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--soil);
+    margin-bottom: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 22px; height: 3px;
+    background: var(--soil);
+    border-radius: 2px;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.7rem;
+    color: var(--green-deep);
+    line-height: 1.2;
+    margin-bottom: 22px;
+    font-weight: 700;
+  }
+
+  /* ── PROBLEM CARDS ── */
+  #problems { background: var(--beige); }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .problem-card {
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    padding: 16px 10px;
+    text-align: center;
+    box-shadow: 0 2px 12px var(--shadow);
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .problem-card:active { transform: scale(0.96); }
+  .problem-card.urgent { border-color: #e74c3c; }
+  .problem-card.urgent .problem-dot {
+    position: absolute; top: 8px; right: 8px;
+    width: 8px; height: 8px;
+    background: #e74c3c;
+    border-radius: 50%;
+  }
+  .problem-icon {
+    font-size: 2.6rem;
+    margin-bottom: 7px;
+    display: block;
+    line-height: 1;
+  }
+  .problem-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--text-mid);
+    line-height: 1.2;
+  }
+  .problem-card-bg {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .bg-red   { background: #f7cac9; }
+  .bg-yellow{ background: #ffeaa7; }
+  .bg-blue  { background: #c5e8f0; }
+  .bg-brown { background: #dcc5aa; }
+  .bg-green { background: #c8e6c9; }
+  .bg-orange{ background: #ffe0b2; }
+
+  /* ── SOLUTIONS ── */
+  #solutions { background: var(--cream); }
+  .solution-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .solution-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: 0 2px 16px var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-left: 5px solid var(--green-mid);
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .solution-card:active { transform: scale(0.985); }
+  .solution-card.brown-border { border-left-color: var(--brown-mid); }
+  .solution-card.sun-border   { border-left-color: var(--sun-warm); }
+  .solution-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .solution-icon-wrap {
+    width: 60px; height: 60px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+  .icon-green  { background: var(--green-pale); }
+  .icon-brown  { background: #f2e0cc; }
+  .icon-yellow { background: #fff3cc; }
+  .icon-blue   { background: #d0eaf5; }
+  .solution-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    color: var(--green-deep);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .solution-desc {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    font-weight: 600;
+    line-height: 1.45;
+  }
+  .solution-audio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .audio-btn {
+    background: var(--green-deep);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 16px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+    font-family: 'Nunito', sans-serif;
+  }
+  .audio-btn span { font-size: 0.75rem; color: rgba(255,255,255,0.7); }
+  .works-for {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .works-chip {
+    background: var(--beige);
+    border-radius: 50px;
+    padding: 5px 11px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--text-mid);
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  /* ── VIDEO ── */
+  #videos { background: var(--green-deep); padding: 36px 18px; }
+  #videos .section-label { color: var(--sun); }
+  #videos .section-label::before { background: var(--sun); }
+  #videos .section-title { color: var(--white); }
+  .video-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .video-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.15s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .video-card:active { transform: scale(0.985); }
+  .video-thumb {
+    height: 175px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .video-thumb-1 { background: linear-gradient(135deg, #2d5a1b 0%, #4a9628 100%); }
+  .video-thumb-2 { background: linear-gradient(135deg, #6b3a1f 0%, #9c5c2a 100%); }
+  .video-thumb-3 { background: linear-gradient(135deg, #1a4a6b 0%, #2d7aa8 100%); }
+  .video-thumb-4 { background: linear-gradient(135deg, #4a3d1a 0%, #8a7030 100%); }
+  .play-btn {
+    position: absolute;
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    bottom: 12px; right: 14px;
+  }
+  .video-duration {
+    position: absolute;
+    bottom: 10px; left: 12px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  .video-info {
+    background: rgba(255,255,255,0.07);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .video-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .video-title {
+    font-size: 0.95rem;
+    color: var(--white);
+    font-weight: 800;
+    line-height: 1.3;
+  }
+  .video-meta {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 600;
+    margin-top: 3px;
+  }
+  .videos-cta {
+    margin-top: 18px;
+    text-align: center;
+  }
+  .btn-outline-white {
+    background: transparent;
+    color: var(--white);
+    border: 2.5px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+    padding: 13px 28px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Nunito', sans-serif;
+    transition: background 0.15s;
+  }
+  .btn-outline-white:active { background: rgba(255,255,255,0.1); }
+
+  /* ── IMPACT ── */
+  #impact { background: var(--beige); }
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .impact-card {
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    padding: 20px 14px;
+    text-align: center;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .impact-icon { font-size: 2.4rem; margin-bottom: 8px; }
+  .impact-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    color: var(--green-deep);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .impact-unit {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--green-mid);
+  }
+  .impact-label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: 700;
+    margin-top: 5px;
+    line-height: 1.25;
+  }
+  .impact-map {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: 0 2px 12px var(--shadow);
+    text-align: center;
+  }
+  .map-dots {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+  }
+  .map-caption {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 700;
+  }
+  .partners-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    justify-content: center;
+  }
+  .partner-chip {
+    background: var(--beige-dark);
+    border-radius: 50px;
+    padding: 7px 14px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--text-mid);
+  }
+
+  /* ── TESTIMONIAL ── */
+  #testimonial { background: var(--cream); }
+  .testimonial-card {
+    background: var(--green-deep);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px; left: 14px;
+    font-family: 'Fraunces', serif;
+    font-size: 7rem;
+    color: rgba(249,199,79,0.2);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .testimonial-text {
+    font-size: 1.05rem;
+    color: var(--white);
+    font-weight: 700;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .testimonial-farmer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative; z-index: 1;
+  }
+  .farmer-avatar {
+    width: 50px; height: 50px;
+    background: var(--sun);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+  }
+  .farmer-name { font-size: 0.95rem; color: var(--sun); font-weight: 800; }
+  .farmer-loc  { font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 600; margin-top: 2px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--brown-dark);
+    padding: 30px 18px 24px;
+  }
+  .footer-logo {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 20px;
+  }
+  .footer-logo-icon {
+    width: 40px; height: 40px;
+    background: var(--sun);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .footer-logo-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    font-weight: 700;
+  }
+  .footer-tagline {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  .footer-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .footer-feat {
+    background: rgba(255,255,255,0.1);
+    border: 1.5px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.85);
+    border-radius: 50px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    display: flex; align-items: center; gap: 6px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .footer-feat:active { background: rgba(255,255,255,0.2); }
+  .footer-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+    margin-bottom: 16px;
+  }
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    font-weight: 600;
+  }
+  .footer-langs {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .lang-btn {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.7);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+  }
+  .lang-btn.active {
+    background: var(--sun);
+    border-color: var(--sun);
+    color: var(--brown-dark);
+  }
+
+  /* ── STICKY CTA BAR ── */
+  .sticky-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    border-top: 2px solid var(--beige-dark);
+    padding: 12px 16px;
+    display: flex;
+    gap: 10px;
+    z-index: 99;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  }
+  .sticky-btn {
+    flex: 1;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 10px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-family: 'Nunito', sans-serif;
+    transition: transform 0.12s;
+  }
+  .sticky-btn:active { transform: scale(0.94); }
+  .sticky-btn span { font-size: 1.35rem; }
+  .sticky-btn.s-green { background: var(--green-pale); color: var(--green-deep); }
+  .sticky-btn.s-brown { background: #f2e0cc; color: var(--brown-dark); }
+  .sticky-btn.s-yellow { background: #fff3cc; color: #7a5a00; }
+  .sticky-btn.s-sun { background: var(--sun); color: var(--brown-dark); }
+
+  /* Bottom padding for sticky bar */
+  .page-end-pad { height: 90px; }
+
+  /* Scroll animations */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="logo-icon">🌱</div>
+    SoilLife
+  </div>
+  <button class="nav-lang">🌍 English ▾</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="before-after">
+    <span class="ba-pill before">BEFORE</span>
+    <span class="ba-pill after">AFTER ✓</span>
+  </div>
+  <div class="hero-badge">🌍 For Every Farmer</div>
+  <h1>Restore Your Land.<br><em>Grow Your Future.</em></h1>
+  <p>Simple farming guides for healthier soil, stronger crops, and climate resilience.</p>
+  <div class="hero-btns">
+    <button class="btn-primary">🎧 Listen</button>
+    <button class="btn-secondary">📹 Watch Guides</button>
+    <button class="btn-secondary">🌱 Soil Help</button>
+  </div>
+  <div class="voice-search">
+    <div class="mic-btn">🎙️</div>
+    <div>
+      <span>Describe your problem</span>
+      <small>Tap and speak in your language</small>
+    </div>
+  </div>
+  <div class="hero-scene">
+    <div class="hero-scene-bg"></div>
+    <div class="farmer-card sm">👩🏾‍🌾</div>
+    <div class="farmer-card big">👨🏿‍🌾</div>
+    <div class="farmer-card med">👩🏽‍🌾</div>
+    <div class="farmer-card sm">🌾</div>
+  </div>
+</section>
+
+<!-- PROBLEM CARDS -->
+<section id="problems">
+  <div class="section-label">Common Problems</div>
+  <div class="section-title">What's happening<br>on your farm?</div>
+  <div class="problem-grid">
+
+    <div class="problem-card urgent fade-up">
+      <div class="problem-dot"></div>
+      <span class="problem-icon">🌵</span>
+      <div class="problem-label">Dry Cracked Soil</div>
+      <div class="problem-card-bg bg-brown"></div>
+    </div>
+
+    <div class="problem-card fade-up">
+      <span class="problem-icon">🍂</span>
+      <div class="problem-label">Yellow Leaves</div>
+      <div class="problem-card-bg bg-yellow"></div>
+    </div>
+
+    <div class="problem-card fade-up">
+      <span class="problem-icon">🌊</span>
+      <div class="problem-label">Flooded Crops</div>
+      <div class="problem-card-bg bg-blue"></div>
+    </div>
+
+    <div class="problem-card fade-up">
+      <span class="problem-icon">⛰️</span>
+      <div class="problem-label">Soil Erosion</div>
+      <div class="problem-card-bg bg-brown"></div>
+    </div>
+
+    <div class="problem-card fade-up">
+      <span class="problem-icon">📉</span>
+      <div class="problem-label">Low Harvest</div>
+      <div class="problem-card-bg bg-red"></div>
+    </div>
+
+    <div class="problem-card fade-up">
+      <span class="problem-icon">🐛</span>
+      <div class="problem-label">Pest Damage</div>
+      <div class="problem-card-bg bg-orange"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section id="solutions">
+  <div class="section-label">Proven Solutions</div>
+  <div class="section-title">Simple steps<br>that really work</div>
+  <div class="solution-cards">
+
+    <div class="solution-card fade-up">
+      <div class="solution-top">
+        <div class="solution-icon-wrap icon-brown">🍂</div>
+        <div>
+          <div class="solution-name">Mulching</div>
+          <div class="solution-desc">Cover your soil with leaves or straw to keep moisture in and weeds out.</div>
+        </div>
+      </div>
+      <div class="solution-audio">
+        <button class="audio-btn">▶ Listen <span>10 sec</span></button>
+      </div>
+      <div class="works-for">
+        <span class="works-chip">☀️ Dry Climate</span>
+        <span class="works-chip">🏜️ Sandy Soil</span>
+        <span class="works-chip">🌽 Maize</span>
+      </div>
+    </div>
+
+    <div class="solution-card brown-border fade-up">
+      <div class="solution-top">
+        <div class="solution-icon-wrap icon-green">♻️</div>
+        <div>
+          <div class="solution-name">Composting</div>
+          <div class="solution-desc">Turn food scraps and leaves into powerful free fertilizer for your crops.</div>
+        </div>
+      </div>
+      <div class="solution-audio">
+        <button class="audio-btn">▶ Listen <span>10 sec</span></button>
+      </div>
+      <div class="works-for">
+        <span class="works-chip">🌱 All Soil Types</span>
+        <span class="works-chip">🍅 Vegetables</span>
+        <span class="works-chip">💰 Free</span>
+      </div>
+    </div>
+
+    <div class="solution-card sun-border fade-up">
+      <div class="solution-top">
+        <div class="solution-icon-wrap icon-yellow">🌳</div>
+        <div>
+          <div class="solution-name">Agroforestry</div>
+          <div class="solution-desc">Plant trees alongside crops to add shade, stop erosion, and improve soil health.</div>
+        </div>
+      </div>
+      <div class="solution-audio">
+        <button class="audio-btn">▶ Listen <span>10 sec</span></button>
+      </div>
+      <div class="works-for">
+        <span class="works-chip">🌧️ Any Climate</span>
+        <span class="works-chip">⛰️ Hilly Land</span>
+        <span class="works-chip">☕ Coffee/Cacao</span>
+      </div>
+    </div>
+
+    <div class="solution-card fade-up">
+      <div class="solution-top">
+        <div class="solution-icon-wrap icon-blue">💧</div>
+        <div>
+          <div class="solution-name">Rainwater Harvesting</div>
+          <div class="solution-desc">Collect and store rain during wet seasons so crops survive the dry ones.</div>
+        </div>
+      </div>
+      <div class="solution-audio">
+        <button class="audio-btn">▶ Listen <span>10 sec</span></button>
+      </div>
+      <div class="works-for">
+        <span class="works-chip">☀️ Dry Regions</span>
+        <span class="works-chip">🌽 Maize</span>
+        <span class="works-chip">🫘 Beans</span>
+      </div>
+    </div>
+
+    <div class="solution-card brown-border fade-up">
+      <div class="solution-top">
+        <div class="solution-icon-wrap icon-green">🌿</div>
+        <div>
+          <div class="solution-name">Cover Crops</div>
+          <div class="solution-desc">Grow special plants between harvests to add nutrients and protect your soil.</div>
+        </div>
+      </div>
+      <div class="solution-audio">
+        <button class="audio-btn">▶ Listen <span>10 sec</span></button>
+      </div>
+      <div class="works-for">
+        <span class="works-chip">🌧️ Wet Season</span>
+        <span class="works-chip">🟤 All Soil</span>
+        <span class="works-chip">♻️ Free Nitrogen</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="section-label">Video Learning</div>
+  <div class="section-title">Watch & Learn</div>
+  <div class="video-grid">
+
+    <div class="video-card fade-up">
+      <div class="video-thumb video-thumb-1">
+        🌱
+        <div class="play-btn">▶</div>
+        <div class="video-duration">4:32</div>
+      </div>
+      <div class="video-info">
+        <div class="video-avatar">👨🏿‍🌾</div>
+        <div>
+          <div class="video-title">How to Stop Soil Erosion</div>
+          <div class="video-meta">👁 24k views · Simple steps</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card fade-up">
+      <div class="video-thumb video-thumb-2">
+        ♻️
+        <div class="play-btn">▶</div>
+        <div class="video-duration">3:15</div>
+      </div>
+      <div class="video-info">
+        <div class="video-avatar">👩🏾‍🌾</div>
+        <div>
+          <div class="video-title">Cheap Compost at Home</div>
+          <div class="video-meta">👁 18k views · Zero cost</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card fade-up">
+      <div class="video-thumb video-thumb-3">
+        💧
+        <div class="play-btn">▶</div>
+        <div class="video-duration">5:48</div>
+      </div>
+      <div class="video-info">
+        <div class="video-avatar">👨🏽‍🌾</div>
+        <div>
+          <div class="video-title">Saving Water During Drought</div>
+          <div class="video-meta">👁 31k views · Most watched</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card fade-up">
+      <div class="video-thumb video-thumb-4">
+        🌾
+        <div class="play-btn">▶</div>
+        <div class="video-duration">6:10</div>
+      </div>
+      <div class="video-info">
+        <div class="video-avatar">👩🏽‍🌾</div>
+        <div>
+          <div class="video-title">Better Harvest Next Season</div>
+          <div class="video-meta">👁 12k views · Step by step</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="videos-cta">
+    <button class="btn-outline-white">📹 See All Videos →</button>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact">
+  <div class="section-label">Our Impact</div>
+  <div class="section-title">Farmers we've helped<br>together</div>
+  <div class="impact-grid">
+    <div class="impact-card fade-up">
+      <div class="impact-icon">🌍</div>
+      <div class="impact-num">120k<span class="impact-unit"> ha</span></div>
+      <div class="impact-label">Hectares Restored</div>
+    </div>
+    <div class="impact-card fade-up">
+      <div class="impact-icon">👨‍👩‍👧‍👦</div>
+      <div class="impact-num">84k</div>
+      <div class="impact-label">Farmers Reached</div>
+    </div>
+    <div class="impact-card fade-up">
+      <div class="impact-icon">🌾</div>
+      <div class="impact-num">+40%</div>
+      <div class="impact-label">Crop Improvement</div>
+    </div>
+    <div class="impact-card fade-up">
+      <div class="impact-icon">🌐</div>
+      <div class="impact-num">23</div>
+      <div class="impact-label">Countries Active</div>
+    </div>
+  </div>
+
+  <div class="impact-map fade-up">
+    <div class="map-dots">
+      🟢🟢🟢🟢🟢🟢🟢🟢<br>
+      🟢🟡🟢🟢🟢🟢🟢🟢<br>
+      🟢🟢🟢🟡🟢🟢🟡🟢<br>
+      🟢🟢🟢🟢🟢🟢🟢🟢<br>
+      🟢🟢🟡🟢🟢🟢🟢🟢
+    </div>
+    <div class="map-caption">🟢 Active Communities · 🟡 New This Month</div>
+  </div>
+
+  <div class="partners-row">
+    <div class="partner-chip">🏫 FAO</div>
+    <div class="partner-chip">🌱 CGIAR</div>
+    <div class="partner-chip">🤝 USAID</div>
+    <div class="partner-chip">🏛️ IFAD</div>
+    <div class="partner-chip">📡 AfricaRice</div>
+    <div class="partner-chip">🔬 IITA</div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section id="testimonial" style="padding-top: 0;">
+  <div class="testimonial-card fade-up">
+    <div class="testimonial-text">
+      "After I watched the mulching video, my maize grew much better even without rain. My family now has enough food for the whole dry season."
+    </div>
+    <div class="testimonial-farmer">
+      <div class="farmer-avatar">👩🏿‍🌾</div>
+      <div>
+        <div class="farmer-name">Amina Traoré</div>
+        <div class="farmer-loc">📍 Burkina Faso, West Africa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-icon">🌱</div>
+    <div>
+      <div class="footer-logo-text">SoilLife</div>
+      <div class="footer-tagline">Knowledge for every farmer</div>
+    </div>
+  </div>
+
+  <div class="footer-features">
+    <div class="footer-feat">📶 Works Offline</div>
+    <div class="footer-feat">🔊 Audio Learning</div>
+    <div class="footer-feat">📻 Radio Guides</div>
+    <div class="footer-feat">🌍 23 Languages</div>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 SoilLife · Free for all farmers</div>
+    <div class="footer-langs">
+      <button class="lang-btn active">EN</button>
+      <button class="lang-btn">FR</button>
+      <button class="lang-btn">SW</button>
+      <button class="lang-btn">HI</button>
+      <button class="lang-btn">AM</button>
+    </div>
+  </div>
+</footer>
+
+<!-- Bottom sticky nav -->
+<div class="sticky-bar">
+  <button class="sticky-btn s-green"><span>🌱</span>Soil Help</button>
+  <button class="sticky-btn s-brown"><span>📹</span>Videos</button>
+  <button class="sticky-btn s-yellow"><span>🎧</span>Listen</button>
+  <button class="sticky-btn s-sun"><span>🎙️</span>Speak</button>
+</div>
+
+<div class="page-end-pad"></div>
+
+<script>
+  // Fade-up scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          e.target.classList.add('visible');
+        }, Array.from(e.target.parentElement?.children || []).indexOf(e.target) * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Audio button feedback
+  document.querySelectorAll('.audio-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const orig = this.innerHTML;
+      this.innerHTML = '⏸ Playing... <span>10 sec</span>';
+      this.style.background = '#f4a129';
+      setTimeout(() => {
+        this.innerHTML = orig;
+        this.style.background = '';
+      }, 2000);
+    });
+  });
+
+  // Language buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
